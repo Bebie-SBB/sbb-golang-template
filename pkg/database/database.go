@@ -9,7 +9,6 @@ import (
 
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
-	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
@@ -96,13 +95,6 @@ func initDatabases() error {
 
 func openDatabase(dbCfg config.Database, gormCfg *gorm.Config) (*gorm.DB, error) {
 	switch dbCfg.Config.Dialect {
-	case "sqlite":
-		dbPath := dbCfg.Config.Name
-		if dbPath == "" {
-			dbPath = "app.db"
-		}
-		return gorm.Open(sqlite.Open(dbPath), gormCfg)
-
 	case "postgres":
 		dsn := buildPostgresDSN(dbCfg.Config)
 		return gorm.Open(postgres.Open(dsn), gormCfg)
