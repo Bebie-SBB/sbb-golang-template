@@ -1,0 +1,24 @@
+{
+  "server": {
+    "cors": {
+      "allow_headers": ["*"],
+      "allow_origin": ["*"]
+    },
+    "name": "sbb-golang-template",
+    "port": 9090
+  },
+  "databases": [
+    {
+      "name": "sqlite",
+      "config": {
+        "dialect": "sqlite"
+      }
+    }
+  ],
+  "configs": {
+    "displayResponseError": true,
+    "databaseList": "sqlite",
+    "isMigration": true,
+    "targetMigrationDatabase": "sqlite"
+  }
+}

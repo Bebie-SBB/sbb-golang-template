@@ -1,0 +1,15 @@
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.env
+*.log
+logs/
+tmp/
+bin/
+app
+app.db
+.DS_Store

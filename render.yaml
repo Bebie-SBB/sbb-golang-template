@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: my-service
+    env: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: CONFIG_SERVICE_NAME
+        value: my-service
+      - key: CONFIG_IS_MIGRATION
+        value: "true"
+      - key: CONFIG_DATABASE_LIST
+        value: sqlite
+      - key: CONFIG_TARGET_MIGRATION_DATABASE
+        value: sqlite
+      - key: CONFIG_DISPLAY_RESPONSE_ERROR
+        value: "false"

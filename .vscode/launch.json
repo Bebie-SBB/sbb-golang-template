@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch (local)",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}",
+            "args": ["--env=local", "--loadEnvFile=true", "--loadConfFile=false"],
+            "env": {}
+        },
+        {
+            "name": "Launch (dev)",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}",
+            "args": ["--env=dev", "--loadEnvFile=true", "--loadConfFile=false"],
+            "env": {}
+        }
+    ]
+}

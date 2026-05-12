@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat)",
+      "Bash(chmod +x /tmp/explore.sh)",
+      "Bash(/tmp/explore.sh)",
+      "Bash(chmod +x /tmp/explore_sbb.sh)",
+      "Bash(/tmp/explore_sbb.sh)",
+      "Bash(cat > *)",
+      "Bash(go mod *)",
+      "Bash(go build *)",
+      "Bash(go vet *)",
+      "Bash(dlv version *)",
+      "Bash(go install *)",
+      "Bash(~/go/bin/dlv version *)",
+      "Bash(lsof -ti:9090)",
+      "Bash(xargs kill -9)",
+      "Bash(go get *)",
+      "Bash(~/go/bin/swag init *)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
+    ]
+  }
+}

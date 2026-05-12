@@ -1,0 +1,258 @@
+basePath: /
+definitions:
+  dummy.CreateArgs:
+    properties:
+      active:
+        type: boolean
+      code:
+        type: string
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    required:
+    - code
+    - name
+    type: object
+  dummy.Dummy:
+    properties:
+      active:
+        type: boolean
+      code:
+        type: string
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    required:
+    - code
+    - name
+    type: object
+  dummy.ReadArgs:
+    properties:
+      active:
+        type: boolean
+      allowNotFoundFlg:
+        type: boolean
+      code:
+        type: string
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    required:
+    - code
+    - name
+    type: object
+  dummy.UpdateArgs:
+    properties:
+      active:
+        type: boolean
+      code:
+        type: string
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    required:
+    - code
+    - name
+    type: object
+  response.Response:
+    properties:
+      data: {}
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+host: localhost:9090
+info:
+  contact: {}
+  description: Go REST API template with modular structure.
+  title: SBB Golang Template API
+  version: "1.0"
+paths:
+  /dummys:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a dummy record by code
+      parameters:
+      - description: Dummy data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.Dummy'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Delete dummy
+      tags:
+      - dummy
+    post:
+      consumes:
+      - application/json
+      description: Create a new dummy record
+      parameters:
+      - description: Dummy data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.CreateArgs'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dummy.Dummy'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Create dummy
+      tags:
+      - dummy
+    put:
+      consumes:
+      - application/json
+      description: Update an existing dummy record
+      parameters:
+      - description: Dummy data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.UpdateArgs'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dummy.Dummy'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Update dummy
+      tags:
+      - dummy
+  /dummys/info:
+    post:
+      consumes:
+      - application/json
+      description: Get a single dummy record by its code
+      parameters:
+      - description: Dummy code
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.ReadArgs'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dummy.Dummy'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Get dummy by code
+      tags:
+      - dummy
+  /dummys/search:
+    get:
+      description: Search dummys by keyword with pagination
+      parameters:
+      - description: Search keyword
+        in: query
+        name: keyword
+        required: true
+        type: string
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Items per page
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/dummy.Dummy'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: List dummys
+      tags:
+      - dummy
+schemes:
+- http
+- https
+swagger: "2.0"
